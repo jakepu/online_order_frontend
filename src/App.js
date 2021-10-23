@@ -5,6 +5,7 @@ import './App.css';
 import LoginForm from "./components/LoginForm.js";
 import FoodList from "./components/FoodList.js";
 import MyCart from "./components/MyCart";
+import SignupForm from "./components/SignupForm";
 const {Header, Content} = Layout;
 const { Title } = Typography;
 function App() {
@@ -23,7 +24,7 @@ function App() {
                         ?
                         <MyCart />
                         :
-                        null
+                        <SignupForm />
                     }
                 </div>
             </div>
