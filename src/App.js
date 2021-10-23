@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import {Layout} from "antd";
+import { Typography } from 'antd';
+import {useState} from "react";
 import './App.css';
-
+import LoginForm from "./components/LoginForm.js";
+import FoodList from "./components/FoodList.js";
+import MyCart from "./components/MyCart";
+const {Header, Content} = Layout;
+const { Title } = Typography;
 function App() {
+    const [authed, setAuthed] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout style={{height: "100vh"}}>
+        <Header>
+            <div className="header">
+                <Title level={2}
+                       style={{ color: "white", lineHeight: "inherit", marginBottom: 0 }}
+                >
+                    Lai Food
+                </Title>
+                <div>
+                    { authed
+                        ?
+                        <MyCart />
+                        :
+                        null
+                    }
+                </div>
+            </div>
+        </Header>
+      <Content style={{
+        padding: "50px",
+        maxHeight: "calc(100% - 64px)",
+        overflowY: "auto",
+      }}>
+          {
+              authed ? <FoodList /> : <LoginForm onSuccess={() => setAuthed(true)}/>
+          }
+
+      </Content>
+    </Layout>
   );
 }
 
