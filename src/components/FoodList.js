@@ -16,12 +16,12 @@ const AddToCartButton = ({itemId}) => {
             });
     }
     return (
-        <Tooltip title={"Add to shopping card"}>
+        <Tooltip title={"Add to shopping cart"}>
             <Button
                 icon={<PlusOutlined/>}
                 type="primary"
                 loading={loading}
-                onlick={addToCart}
+                onClick={addToCart}
             />
         </Tooltip>
     )
